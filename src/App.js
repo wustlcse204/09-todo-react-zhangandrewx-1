@@ -3,24 +3,45 @@ import './App.css';
 import Todo from './Todo';
 import NewTodo from './NewTodo';
 
-class App extends Component {
-  render() {
-    return (
-      <div className = "container">
-      <div className = "addTODO">
-  <form className = "adding">
-      <button className = "hello" type="button">Add a To Do</button>
-      <input type="text" id="ToDo" name="ToDo" placeholder="Type Here!"/>
 
-    </form>
-    <div className = "ToDos">
-        <ul id = "list">
-            
-        </ul>
-    </div> 
-  </div>
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      todos: []
+    };
+  }
+    componentDidMount(){
+      var self = this;
   
-</div>
+      var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            //console.log(self);
+            if (this.readyState === 4 && this.status === 200) {
+                var todosResponse = JSON.parse(this.responseText);
+                self.setState({
+                  todos: todosResponse
+                });
+                console.log(todosResponse);
+            }
+        };
+        xhttp.open("GET", "https://cse204.work/todos", true);
+        xhttp.setRequestHeader("x-api-key", "e23216-2494fb-240272-d05fb8-584f3d");
+        xhttp.send();
+    }
+  render() {
+
+   
+    return (
+      <section id="todos">
+      <NewTodo  />
+      {this.state.todos.map((thisTodo) =>
+          <Todo key = {thisTodo.id}
+            todoData = {thisTodo}
+            completed = {thisTodo.completed}
+            text = {thisTodo.text}/>
+        )}
+    </section>
     );
   }
 }
