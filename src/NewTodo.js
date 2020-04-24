@@ -12,14 +12,14 @@ class NewTodo extends Component {
       text: event.target.userInput.value,
       completed: false
     };
+    event.target.userInput.value = '';
     this.props.newTodoHandler(newToDoObject);
   }
   render() {
     return (
       <div>
         <form className = "adding" onSubmit={this.addTodo}>
-        <button className = "hello" type="button">Add a To Do</button>
-        <input type="text" id="ToDo" name="userInput"  placeholder="Type Here!"/>
+        <input type="text" id="ToDo" name="userInput"  placeholder="Add a ToDo!"/>
       </form>
       </div>
     );

@@ -20,7 +20,10 @@
     width: 100px;
     height: 20px;
   }
-
+  #ToDo{
+position: relative;
+left: 50px;
+  }
  .ToDos{
     margin-left:20%;
     background-color: lavender;
@@ -53,11 +56,13 @@
     }
     #ToDo{
         position: relative;
-        right: 150px;
+        right: 200px;
     }
     .ToDos{
         position: relative;
         right: 100px;
+        
     }
-    
+     
+ 
   }
