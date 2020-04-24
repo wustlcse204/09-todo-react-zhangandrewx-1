@@ -11,12 +11,13 @@ class Todo extends Component {
         //</ul>
     //</div> 
     <article id = "{this.props.id}" className = "ToDos">
-          <p>
+          <ul>
+            <li>
               <button>Completed Task</button>
               <button>Delete Task</button>
               {this.props.todoData.text}
-
-          </p>
+              </li>
+          </ul>
         </article>
     );
   }
